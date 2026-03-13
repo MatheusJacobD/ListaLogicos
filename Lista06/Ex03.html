@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilhete</title>
+</head>
+<body>
+    <p>Tipo de passageiro | Tipo de passagem</p>
+
+    <select name="passagem" id="idPassagem">
+        <option value="comum">Comum</option>
+        <option value="estudante">Estudante</option>
+        <option value="idoso">Idoso/PNE</option></select>
+
+    <select name="tipo" id="idTipo">
+        <option value="unica">Passagem Única</option>
+        <option value="integracao">Integração</option></select><br><br>
+
+    <button onclick="simular()">Simular preço</button>
+
+    <p id="idResultado"></p>
+</body>
+<script>
+    function simular(){
+        let passagem = idPassagem.value;
+        let tipo = idTipo.value;
+
+        let preco = 0;
+
+        if (tipo == "unica"){
+            preco += 4.40;
+        } else {
+            preco += 5.90;
+        }
+
+        if (passagem == "estudante"){
+            preco = preco - (preco / 2);
+        }
+
+        if (passagem == "idoso"){
+            preco = 0;
+        }
+
+        idResultado.innerHTML = `Valor da passagem escolhida: R$${preco}`;
+
+    }
+</script>
+</html>

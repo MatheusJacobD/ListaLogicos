@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador</title>
+</head>
+<body>
+    <input type="text" id="idTamanho" placeholder="Digite o tamanho da tela do celular">
+
+    <input type="text" id="idCor" placeholder="Digite a cor do celular">
+
+    <button onclick="descobrir()">Será que ele gosta?</button>
+
+    <img src="" id="idImg">
+</body>
+<script>
+    function descobrir(){
+        let tamanho = Number(idTamanho.value);
+        let cor = idCor.value;
+
+        if(tamanho > 6.5 && cor == "preta" || cor == "prata"){
+            idImg.src = "happy.png";
+        } else {
+            idImg.src = "sad.png";
+        }
+    }
+</script>
+</html>

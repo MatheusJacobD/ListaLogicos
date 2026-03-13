@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autenticação Segura</title>
+</head>
+<body>
+    <input type="text" id="idLogin" placeholder="digite seu login">
+    <input type="text" id="idSenha" placeholder="digite sua senha">
+    <input type="text" id="idInfo" placeholder="digite sua informação pessoal">
+
+    <button onclick="autenticar()">Autenticar</button>
+    
+    <p id="idResultado"></p>
+</body>
+<script>
+    let tentativas = 3;
+    let block = 0;
+
+    function autenticar(){
+        let login = idLogin.value;
+        let senha = idSenha.value;
+        let info = idInfo.value;
+
+        let msg = "";
+
+        if(login == "ana" && senha == "braga" && info == "1949" || info == "louro josé"){
+            msg = "Usuário autenticado";
+
+            if(tentativas != 3){
+                tentativas = 3;
+            }
+        } else {
+            msg = "Falha na autenticação";
+            tentativas = tentativas - 1;
+
+            if (tentativas <= 2){
+                msg += `<br>Você ainda tem ${tentativas} tentativa(s)`
+            } 
+
+            if (tentativas == 0){
+                block = 1;
+            }
+        }
+
+        if (block == 1){
+            msg = "Usuário bloqueado! Procure seu gerente!";
+        }
+
+        idResultado.innerHTML = msg;
+    }
+</script>
+</html>
